@@ -41,6 +41,6 @@ pipeline:
             spec:
               type: Pool
               spec:
-                poolName: he
-                harnessImageConnectorRef: do
+                poolName: heg
+                harnessImageConnectorRef: prsent
                 os: Linux

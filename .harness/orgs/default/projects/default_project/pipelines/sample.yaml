@@ -29,7 +29,7 @@ pipeline:
               type: Pool
               spec:
                 poolName: test
-                harnessImageConnectorRef: account.harnessImage
+                harnessImageConnectorRef: tes
                 os: Linux
           execution:
             steps:

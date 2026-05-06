@@ -1,0 +1,46 @@
+pipeline:
+  name: sample
+  identifier: sample
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: gelo
+        repoName: sample-java-app
+        build: <+input>
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          buildIntelligence:
+            enabled: true
+          infrastructure:
+            type: VM
+            spec:
+              type: Pool
+              spec:
+                poolName: test
+                harnessImageConnectorRef: account.harnessImage
+                os: Linux
+          execution:
+            steps:
+              - step:
+                  type: GitClone
+                  name: GitClone_1
+                  identifier: GitClone_1
+                  spec:
+                    connectorRef: gelo
+                    repoName: sample-java-app
+                    build:
+                      type: branch
+                      spec:
+                        branch: main

@@ -3,39 +3,33 @@ pipeline:
   identifier: hey
   projectIdentifier: default_project
   orgIdentifier: default
-  tags: {}
   properties:
     ci:
       codebase:
         connectorRef: gelo
         repoName: sample-java-app
-        build: <+input>
+        build:
+          type: branch
+          spec:
+            branch: main
   stages:
     - stage:
         name: clone
         identifier: clone
-        description: ""
         type: CI
         spec:
           cloneCodebase: true
-          caching:
-            enabled: true
-            override: true
-          buildIntelligence:
-            enabled: true
           execution:
             steps:
               - step:
-                  type: GitClone
-                  name: GitClone_1
-                  identifier: GitClone_1
+                  type: Run
+                  name: Build
+                  identifier: build
                   spec:
-                    connectorRef: gelo
-                    repoName: sample-java-app
-                    build:
-                      type: branch
-                      spec:
-                        branch: main
+                    image: maven:3.9.6-eclipse-temurin-17
+                    shell: Sh
+                    command: |
+                      mvn clean install
           infrastructure:
             type: VM
             spec:

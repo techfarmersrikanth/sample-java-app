@@ -1,6 +1,6 @@
 # Java Programmings Overview
 
-## 📌 What is Java Programming?
+## 📌 What is Java Programming and a sample java ?
 
 Java is a **high-level, object-oriented programming language** used to build secure, scalable, and platform-independent applications.
 
